@@ -11,5 +11,5 @@ This project is based on networking using python programming language and secure
 
 ### Workflow Diagram
 
-![Alt text]('/home/aswinrprasad/Documents/Git Repos/ChatApp_PyProject/export (1).jpg'?raw=true "Rough Workflow Diagram")
+![alt text](https://raw.githubusercontent.com/aswinrprasad/ChatApp_PyProject/master/export%20(1).jpg)
 
