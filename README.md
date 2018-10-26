@@ -18,9 +18,13 @@ This project is based on networking using python programming language and secure
 #### Progress :
 
 1)Designing Server side python script and debugging it.
+
 2)Base python script for client side.
+
 3)Giving a graphical user interface for client.py with Tkinter.
+
 4)Debugging Client side python script.
+
 
 Current Status :Working on Encryption of the messages send with Pycrypto Toolkit.
 
