@@ -25,7 +25,24 @@ This project is based on networking using python programming language and secure
 
 4)Debugging Client side python script.
 
+5)End to end Encryption with AES.
 
-Current Status :Working on Encryption of the messages send with Pycrypto Toolkit.
+
+Current Status :Fixing bugs in server.py
+
+Bug : When {quit} is typed into the chat , pipe gets broken and user exit msg won't get displayed.
+
+	Exception in thread Thread-2:
+	Traceback (most recent call last):
+  	File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+  	  self.run()
+  	File "/usr/lib/python2.7/threading.py", line 754, in run
+  	  self.__target(*self.__args, **self.__kwargs)
+  	File "server.py", line 51, in handle_client
+  	  broadcast(msg, name+": ")
+  	File "server.py", line 62, in broadcast
+  	  sock.send(bytes(prefix)+do_decrypt(lenstr(msg)))
+	error: [Errno 32] Broken pipe
+
 
 
