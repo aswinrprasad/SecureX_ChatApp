@@ -15,14 +15,15 @@ def accept_incoming_connections():
     while True:
         client, client_address = SERVER.accept()
         print("%s:%s has connected." % client_address)
-        client.send(bytes("Greetings from the cave!"+"Now type your name and press enter!"))
+        client.send(bytes("Welcome to SecureX!"))
+        client.send(bytes(" Type your name and press enter!"))
         addresses[client] = client_address
         Thread(target=handle_client, args=(client,)).start()
 
 def handle_client(client):  # Takes client socket as argument.
     """Handles a single client connection."""
     name = client.recv(BUFSIZ).decode("utf8")
-    welcome = 'Welcome %s! If you ever want to quit, type {quit} to exit.' % name
+    welcome = 'Welcome %s! To quit chat: type {quit} and send.' % name
     client.send(bytes(welcome))
     msg = "%s has joined the chat!" % name
     broadcast(bytes(msg))
