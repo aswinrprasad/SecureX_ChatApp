@@ -28,11 +28,11 @@ def on_closing(event=None):
     send()
 
 top = tk.Tk()
-top.title("Chatter")
+top.title("SecureX Chat Room")
 
 messages_frame = tk.Frame(top)
 my_msg = tk.StringVar()  # For the messages to be sent.
-my_msg.set("Type your messages here.")
+my_msg.set("Type your name first.")
 scrollbar = tk.Scrollbar(messages_frame)  # To navigate through past messages.
 # Following will contain the messages.
 msg_list = tk.Listbox(messages_frame, height=15, width=50, yscrollcommand=scrollbar.set)
