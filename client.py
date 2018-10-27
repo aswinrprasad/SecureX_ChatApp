@@ -12,17 +12,28 @@ def receive():
     """Handles receiving of messages."""
     while True:
         try:
-            msg = client_socket.recv(BUFSIZ).decode("utf8")
+            msg = client_socket.recv(BUFSIZ)
             msg_list.insert(tk.END, msg)
         except OSError:  # Possibly client has left the chat.
             break
+
+def lenstr(msg):
+    size=len(msg)
+    if size%16 != 0:
+        for i in range(size,200):
+            if i%16 == 0:
+                return msg
+            else:
+                msg=msg+" "
+    else:
+        return msg
 
 
 def send(event=None):  # event is passed by binders.
     """Handles sending of messages."""
     msg = my_msg.get()
     my_msg.set("")  # Clears input field.
-    client_socket.send(bytes(msg))
+    client_socket.send(bytes(do_encrypt(lenstr(msg))))
     if msg == "{quit}":
         client_socket.close()
         top.quit()
