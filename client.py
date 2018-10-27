@@ -1,6 +1,12 @@
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import Tkinter as tk
+from Crypto.Cipher import AES
+
+def do_encrypt(message):
+    obj = AES.new('This is a key123', AES.MODE_CBC, 'This is an IV456')
+    ciphertext = obj.encrypt(message)
+    return ciphertext
 
 def receive():
     """Handles receiving of messages."""
