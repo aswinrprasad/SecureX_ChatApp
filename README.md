@@ -16,7 +16,6 @@ This project is based on networking using python programming language and secure
 ![alt text](https://raw.githubusercontent.com/aswinrprasad/ChatApp_PyProject/master/export%20(1).jpg)
 
 #### Progress :
-
 1)Designing Server side python script and debugging it.
 
 2)Base python script for client side.
@@ -28,9 +27,7 @@ This project is based on networking using python programming language and secure
 5)End to end Encryption with AES.
 
 
-#### Current Status :
-Bug fixing complete.
-
+#### Current Status : Bug fixing complete.
 Bug 1:(fixed) When {quit} is typed into the chat , pipe gets broken and user exit msg won't get displayed.
 
 	Exception in thread Thread-2:
