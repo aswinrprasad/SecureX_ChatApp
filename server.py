@@ -39,32 +39,32 @@ def accept_incoming_connections():
 
 def handle_client(client):  # Takes client socket as argument.
     """Handles a single client connection."""
-    name = do_decrypt(client.recv(BUFSIZ))
+    name = (do_decrypt(client.recv(BUFSIZ))).rstrip(' ')
     welcome = 'Welcome %s! To quit chat: type {quit} and send.' % name
     client.send(bytes(welcome))
     msg = "%s has joined the chat!" % name
-    broadcast1(bytes(msg))
+    broadcast(bytes(msg))
     clients[client] = name
     while True:
-        msg = client.recv(BUFSIZ)
+        msg = (do_decrypt(client.recv(BUFSIZ))).rstrip(' ')
         if msg != bytes("{quit}"):
             broadcast(msg, name+": ")
         else:
             client.send(bytes("{quit}"))
             client.close()
             del clients[client]
-            broadcast1(bytes("%s has left the chat." % name))
+            broadcast(bytes("%s has left the chat." % name))
             break
 
 def broadcast(msg, prefix=""):  # prefix is for name identification.
     """Broadcasts a message to all the clients."""
     for sock in clients:
-        sock.send(bytes(prefix)+do_decrypt(lenstr(msg)))
-
-def broadcast1(msg, prefix=""):  # prefix is for name identification.
-    """Broadcasts a message to all the clients."""
-    for sock in clients:
         sock.send(bytes(prefix)+msg)
+
+#def broadcast1(msg, prefix=""):  # prefix is for name identification.
+    """Broadcasts a message to all the clients."""
+#    for sock in clients:
+#        sock.send(bytes(prefix)+msg)
 
 if __name__ == "__main__":
     SERVER.listen(5)  # Listens for 5 connections at max.
