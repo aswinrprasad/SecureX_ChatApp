@@ -28,9 +28,10 @@ This project is based on networking using python programming language and secure
 5)End to end Encryption with AES.
 
 
-Current Status :Fixing bugs in server.py
+#### Current Status :
+Bug fixing complete.
 
-Bug : When {quit} is typed into the chat , pipe gets broken and user exit msg won't get displayed.
+Bug 1:(fixed) When {quit} is typed into the chat , pipe gets broken and user exit msg won't get displayed.
 
 	Exception in thread Thread-2:
 	Traceback (most recent call last):
