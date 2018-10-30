@@ -4,8 +4,8 @@ from Crypto.Cipher import AES
 
 clients = {}
 addresses = {}
-HOST = ''
-PORT = 33000
+HOST = '192.168.43.87'
+PORT = 5000
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
 SERVER = socket(AF_INET, SOCK_STREAM)
@@ -61,10 +61,6 @@ def broadcast(msg, prefix=""):  # prefix is for name identification.
     for sock in clients:
         sock.send(bytes(prefix)+msg)
 
-#def broadcast1(msg, prefix=""):  # prefix is for name identification.
-    """Broadcasts a message to all the clients."""
-#    for sock in clients:
-#        sock.send(bytes(prefix)+msg)
 
 if __name__ == "__main__":
     SERVER.listen(5)  # Listens for 5 connections at max.

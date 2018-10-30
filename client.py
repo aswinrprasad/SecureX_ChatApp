@@ -20,7 +20,7 @@ def receive():
 def lenstr(msg):
     size=len(msg)
     if size%16 != 0:
-        for i in range(size,200):
+        for i in range(size,600):
             if i%16 == 0:
                 return msg
             else:
@@ -33,7 +33,7 @@ def send(event=None):  # event is passed by binders.
     """Handles sending of messages."""
     msg = my_msg.get()
     my_msg.set("")  # Clears input field.
-    client_socket.send(bytes(do_encrypt(lenstr(msg))))
+    client_socket.sendto(bytes(do_encrypt(lenstr(msg))),ADDR)
     if msg == "{quit}":
         client_socket.close()
         top.quit()
@@ -52,7 +52,7 @@ my_msg = tk.StringVar()  # For the messages to be sent.
 my_msg.set("Type your name first.")
 scrollbar = tk.Scrollbar(messages_frame)  # To navigate through past messages.
 # Following will contain the messages.
-msg_list = tk.Listbox(messages_frame, height=15, width=50, yscrollcommand=scrollbar.set)
+msg_list = tk.Listbox(messages_frame, height=30, width=80, yscrollcommand=scrollbar.set)
 scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 msg_list.pack(side=tk.LEFT, fill=tk.BOTH)
 msg_list.pack()
@@ -70,7 +70,7 @@ top.protocol("WM_DELETE_WINDOW", on_closing)
 HOST = raw_input('Enter host: ')
 PORT = raw_input('Enter port: ')
 if not PORT:
-    PORT = 33000
+    PORT = 5000
 else:
     PORT = int(PORT)
 
