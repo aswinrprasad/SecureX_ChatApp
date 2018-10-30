@@ -26,6 +26,8 @@ This project is based on networking using python programming language and secure
 
 5)End to end Encryption with AES.
 
+6)Converting the code from Local Machine communication to communicate with two or more different devices.
+
 
 #### Current Status : Bug fixing complete.
 Bug 1:(fixed) When {quit} is typed into the chat , pipe gets broken and user exit msg won't get displayed.
@@ -41,6 +43,40 @@ Bug 1:(fixed) When {quit} is typed into the chat , pipe gets broken and user exi
   	File "server.py", line 62, in broadcast
   	  sock.send(bytes(prefix)+do_decrypt(lenstr(msg)))
 	error: [Errno 32] Broken pipe
+
+#### To find your HOST value to be set :
+
+	$ifconfig
+
+The result will be somewhat like this :
+	
+	eno1: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether ec:8e:b5:53:fb:bd  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+	lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 9992  bytes 698485 (698.4 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 9992  bytes 698485 (698.4 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+	wlo1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.43.87  netmask 255.255.255.0  broadcast 192.168.43.255
+        inet6 fe80::f59f:5412:fab0:a52d  prefixlen 64  scopeid 0x20<link>
+        ether 30:e3:7a:0b:2b:51  txqueuelen 1000  (Ethernet)
+        RX packets 68111  bytes 36842009 (36.8 MB)
+        RX errors 0  dropped 3  overruns 0  frame 0
+        TX packets 55794  bytes 15645620 (15.6 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+We need the address next to inet in wlo1 to be set in the HOST.
+
 
 
 
