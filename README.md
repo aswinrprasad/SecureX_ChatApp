@@ -20,11 +20,11 @@ This project is based on networking using python programming language and secure
 
 + Tkinter
 	
-	sudo apt-get install python-tk
+		sudo apt-get install python-tk
 
 + Pycrypto
 
-	sudo pip install pycrypto
+		sudo pip install pycrypto
 
 + Python (2.7 in my case)
 
