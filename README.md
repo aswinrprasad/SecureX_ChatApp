@@ -9,6 +9,26 @@ A simple chat app which can be used to securely send encrypted texts between two
 
 This project is based on networking using python programming language and secure communication between two or more users with the help of a simple chat app. For accomplishing this we use two python scripts , One for the server and the other for the client. The texts are encrypted with the help of a python cryptography toolkit called pycrypto.
 
+### Features
+
++ End-to-end encryption with AES
++ Totally Secure
++ 5 or less People Chatroom
++ GUI with Tkinter
+
+### Requirements
+
++ Tkinter
+	
+	sudo apt-get install python-tk
+
++ Pycrypto
+
+	sudo pip install pycrypto
+
++ Python (2.7 in my case)
+
+
 ### Workflow Diagram
 
 ## 
@@ -78,5 +98,4 @@ The result will be somewhat like this :
 We need the address next to inet in wlo1 to be set in the HOST.
 
 
-
-
+#### For further Development Fork and commit changes. 
