@@ -1,10 +1,10 @@
-from socket import AF_INET, socket, SOCK_STREAM
+from socket import AF_INET, socket, SOCK_STREAM,gethostbyname,gethostname
 from threading import Thread
 from Crypto.Cipher import AES
 
 clients = {}
 addresses = {}
-HOST = '192.168.43.87'
+HOST = gethostbyname(gethostname()) #To find ip of my lan network. CLI command : ifconfig
 PORT = 5000
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
@@ -32,6 +32,7 @@ def accept_incoming_connections():
     while True:
         client, client_address = SERVER.accept()
         print("%s:%s has connected." % client_address)
+        print HOST
         client.send(bytes("Welcome to SecureX!"))
         client.send(bytes(" Type your name and press enter!"))
         addresses[client] = client_address
@@ -64,7 +65,9 @@ def broadcast(msg, prefix=""):  # prefix is for name identification.
 
 if __name__ == "__main__":
     SERVER.listen(5)  # Listens for 5 connections at max.
-    print("Waiting for connection...")
+    print "The Server Computer IP is :",HOST
+    print "The above IP should only be shared with Devices that you wish to communicate with."
+    print "Waiting for connection..."
     ACCEPT_THREAD = Thread(target=accept_incoming_connections)
     ACCEPT_THREAD.start()  # Starts the infinite loop.
     ACCEPT_THREAD.join()
