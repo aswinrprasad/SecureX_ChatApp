@@ -48,6 +48,7 @@ This project is based on networking using python programming language and secure
 
 6)Converting the code from Local Machine communication to communicate with two or more different devices.
 
+7)Autoget IP address of server computer and store it into HOST.
 
 #### Current Status : Bug fixing complete.
 Bug 1:(fixed) When {quit} is typed into the chat , pipe gets broken and user exit msg won't get displayed.
@@ -64,7 +65,7 @@ Bug 1:(fixed) When {quit} is typed into the chat , pipe gets broken and user exi
   	  sock.send(bytes(prefix)+do_decrypt(lenstr(msg)))
 	error: [Errno 32] Broken pipe
 
-#### To find your HOST value to be set :
+#### To find your HOST value to be set : (Not needed Anymore! The IP will be fetched automatically and displayed in the latest version :D)
 
 	$ifconfig
 
