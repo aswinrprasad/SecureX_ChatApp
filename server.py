@@ -5,11 +5,13 @@ from Crypto.Cipher import AES
 clients = {}
 addresses = {}
 HOST = gethostbyname(gethostname()) #To find ip of my lan network. CLI command : ifconfig
+print "The Server Computer IP is :",HOST
 PORT = 5000
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
 SERVER = socket(AF_INET, SOCK_STREAM)
 SERVER.bind(ADDR)
+
 
 def lenstr(msg):
     size=len(msg)
@@ -31,7 +33,7 @@ def accept_incoming_connections():
     """Sets up handling for incoming clients."""
     while True:
         client, client_address = SERVER.accept()
-        print("%s:%s has connected." % client_address)
+        print "%s:%s has connected to" % client_address,
         print HOST
         client.send(bytes("Welcome to SecureX!"))
         client.send(bytes(" Type your name and press enter!"))
@@ -62,13 +64,12 @@ def broadcast(msg, prefix=""):  # prefix is for name identification.
     for sock in clients:
         sock.send(bytes(prefix)+msg)
 
-
 if __name__ == "__main__":
     SERVER.listen(5)  # Listens for 5 connections at max.
-    print "The Server Computer IP is :",HOST
     print "The above IP should only be shared with Devices that you wish to communicate with."
     print "Waiting for connection..."
     ACCEPT_THREAD = Thread(target=accept_incoming_connections)
     ACCEPT_THREAD.start()  # Starts the infinite loop.
     ACCEPT_THREAD.join()
     SERVER.close()
+
